@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mimořádné oznámení fakulty | Právnická fakulta UP v Olomouci</title>
+    <style>
+        :root {
+            --upol-blue: #004990;
+            --upol-dark: #003163;
+            --upol-light: #e8f1fa;
+            --text-main: #222222;
+            --text-muted: #5f6672;
+        }
+        body {
+            font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f6f9;
+            color: var(--text-main);
+            line-height: 1.65;
+        }
+        /* Horní univerzitní lišta */
+        .top-bar {
+            background-color: var(--upol-dark);
+            color: #cfdbe8;
+            font-size: 12px;
+            padding: 6px 24px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .top-bar span {
+            opacity: 0.9;
+        }
+        /* Hlavní hlavička UPOL */
+        header {
+            background-color: var(--upol-blue);
+            color: #ffffff;
+            padding: 20px 24px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+        }
+        .header-inner {
+            max-width: 1060px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .brand-emblem {
+            width: 54px;
+            height: 54px;
+            border: 2px solid #ffffff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 16px;
+            letter-spacing: 1px;
+            background: rgba(255,255,255,0.1);
+        }
+        .brand-text-uni {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            opacity: 0.9;
+        }
+        .brand-text-fac {
+            font-size: 22px;
+            font-weight: 700;
+            margin-top: 2px;
+        }
+        nav {
+            background-color: #ffffff;
+            border-bottom: 1px solid #dce3ec;
+        }
+        .nav-inner {
+            max-width: 1060px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            gap: 24px;
+            overflow-x: auto;
+        }
+        .nav-inner a {
+            text-decoration: none;
+            color: var(--upol-dark);
+            font-weight: 600;
+            font-size: 14px;
+            padding: 14px 0;
+            border-bottom: 3px solid transparent;
+            white-space: nowrap;
+        }
+        .nav-inner a.active {
+            border-bottom-color: var(--upol-blue);
+            color: var(--upol-blue);
+        }
+        /* Hlavní obsah */
+        .container {
+            max-width: 1060px;
+            margin: 24px auto 48px auto;
+            padding: 0 24px;
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 28px;
+        }
+        .breadcrumbs {
+            grid-column: 1 / -1;
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+        .article-card {
+            background: #ffffff;
+            padding: 32px 36px;
+            border-radius: 4px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+        }
+        .tag {
+            display: inline-block;
+            background-color: var(--upol-light);
+            color: var(--upol-blue);
+            font-weight: 700;
+            font-size: 12px;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 3px;
+            margin-bottom: 12px;
+        }
+        h1 {
+            font-size: 27px;
+            line-height: 1.3;
+            color: var(--upol-dark);
+            margin: 0 0 12px 0;
+        }
+        .meta {
+            font-size: 13px;
+            color: var(--text-muted);
+            padding-bottom: 18px;
+            margin-bottom: 22px;
+            border-bottom: 1px solid #e6ebf1;
+        }
+        .lead {
+            font-size: 16.5px;
+            font-weight: 500;
+            color: #1a2433;
+            margin-bottom: 20px;
+        }
+        h2 {
+            font-size: 19px;
+            color: var(--upol-blue);
+            margin-top: 26px;
+            margin-bottom: 10px;
+        }
+        .quote-box {
+            background-color: var(--upol-light);
+            border-left: 4px solid var(--upol-blue);
+            padding: 16px 20px;
+            margin: 20px 0;
+            font-style: italic;
+        }
+        /* Pravý sloupec */
+        .sidebar-box {
+            background: #ffffff;
+            padding: 22px;
+            border-radius: 4px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+            margin-bottom: 20px;
+        }
+        .sidebar-box h3 {
+            margin: 0 0 14px 0;
+            font-size: 16px;
+            color: var(--upol-dark);
+            border-bottom: 2px solid var(--upol-blue);
+            padding-bottom: 6px;
+        }
+        .fact-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-size: 13.5px;
+        }
+        .fact-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid #eef2f6;
+        }
+        .fact-list li:last-child {
+            border-bottom: none;
+        }
+        .fact-label {
+            font-weight: 700;
+            color: var(--upol-dark);
+            display: block;
+        }
+        .btn-wiki {
+            display: block;
+            text-align: center;
+            background-color: var(--upol-blue);
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 10px 14px;
+            border-radius: 3px;
+            margin-top: 14px;
+            font-size: 13.5px;
+        }
+        .btn-wiki:hover {
+            background-color: var(--upol-dark);
+        }
+        footer {
+            background-color: var(--upol-dark);
+            color: #b8c9dc;
+            padding: 24px;
+            font-size: 12.5px;
+            text-align: center;
+        }
+        @media (max-width: 820px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            .article-card {
+                padding: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <span>Univerzita Palackého v Olomouci | Portál PF</span>
+        <span>CZ / EN / ES / PL</span>
+    </div>
+
+    <header>
+        <div class="header-inner">
+            <div class="brand">
+                <div class="brand-emblem">PF UP</div>
+                <div>
+                    <div class="brand-text-uni">Univerzita Palackého v Olomouci</div>
+                    <div class="brand-text-fac">Právnická fakulta</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <div class="nav-inner">
+            <a href="#">O fakultě</a>
+            <a href="#">Studium</a>
+            <a href="#">Věda a výzkum</a>
+            <a href="#" class="active">Aktuality</a>
+            <a href="#">Zahraničí</a>
+            <a href="#">Síň slávy</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="breadcrumbs">
+            Úvod &rsaquo; Aktuality &rsaquo; Mimořádné usnesení kolegia děkana
+        </div>
+
+        <article class="article-card">
+            <span class="tag">Mimořádné oznámení</span>
+            <h1>prof. JUDr. Blanka Celtová oficiálně zapsána do Síně slávy Právnické fakulty v Olomouci</h1>
+            <div class="meta">
+                Publikováno: 14. 11. 2026 &nbsp;|&nbsp; Autor: Oddělení komunikace a mimořádných talentů PF UP
+            </div>
+
+            <p class="lead">
+                Vedení Právnické fakulty Univerzity Palackého v Olomouci dnes s potěšením potvrdilo to, o čem se v akademických kuloárech i olomouckých běžeckých parcích mluví již dlouho: prof. JUDr. Blanka Celtová dosáhla absolutního maxima ve všech sledovaných disciplínách.
+            </p>
+
+            <h2>Neprůstřelné právo ve čtyřech světových jazycích</h2>
+            <p>
+                Podle interního auditu fakulty dokáže prof. Celtová vést špičkovou právní argumentaci nejen v rodné češtině, ale plynule také v <strong>angličtině</strong>, <strong>španělštině</strong> a <strong>polštině</strong>. Zahraniční delegace tak odjíždějí z Olomouce pravidelně ohromeny její pohotovostí i jazykovou elegancí.
+            </p>
+
+            <div class="quote-box">
+                „Cuando era pequeña, no me gustaba la verdura.“<br>
+                <span style="font-style: normal; font-size: 13px; color: #5f6672;">— Oficiálně schválené fakultní motto prof. Blanky Celtové</span>
+            </div>
+
+            <h2>Rekordy mimo posluchárny: Atletika a výtvarné umění</h2>
+            <p>
+                Komise zároveň zohlednila její mimořádné výsledky mimo akademickou půdu. Blanka Celtová zůstává neporaženou <strong>nejlepší běžkyní v Olomouci</strong>, jejíž tempo v místních sadech slouží jako etalon pro měření času, a zároveň autorkou oceňovaných výtvarných děl, která by podle odborníků snesla srovnání s galerijními expozicemi.
+            </p>
+        </article>
+
+        <aside>
+            <div class="sidebar-box">
+                <h3>Karta osobnosti PF UP</h3>
+                <ul class="fact-list">
+                    <li><span class="fact-label">Jméno a tituly:</span> prof. JUDr. Blanka Celtová</li>
+                    <li><span class="fact-label">Pracoviště:</span> Právnická fakulta, Olomouc</li>
+                    <li><span class="fact-label">Jazykové kompetence:</span> CZ, PL, EN, ES</li>
+                    <li><span class="fact-label">Sportovní status:</span> #1 běžkyně v Olomouci</li>
+                    <li><span class="fact-label">Umělecký obor:</span> Malířství</li>
+                </ul>
+                <a href="./" class="btn-wiki">Otevřít profil na Wikipedii &rarr;</a>
+            </div>
+        </aside>
+    </div>
+
+    <footer>
+        Univerzita Palackého v Olomouci – Neoficiální recesistická stránka vytvořená výhradně pro pobavení.
+    </footer>
+
+</body>
+</html>
